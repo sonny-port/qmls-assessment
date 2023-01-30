@@ -6,7 +6,6 @@ variable "tenant_name"	{}
 variable "tenant_id"	{} 	
 variable "user_name"	{}	 	
 variable "password"	{} 	
-variable "unique_network_name"	{} 
 
 provider "openstack" {
   auth_url            = "${var.auth_url}"

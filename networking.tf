@@ -1,8 +1,9 @@
+/*
 resource "openstack_networking_network_v2" "default" {
   name           = "default"
   admin_state_up = "true"
 }
-
+ 
 resource "openstack_networking_router_v2" "ig" {
   name           = "ig"
   admin_state_up = "true"
@@ -26,6 +27,7 @@ resource "openstack_networking_router_route_v2" "default" {
   destination_cidr = "0.0.0.0/0"
   next_hop         = var.gateway_address
 }
+*/
 
 resource "openstack_networking_secgroup_v2" "administration" {
   name        = "administration"

@@ -29,25 +29,25 @@ resource "openstack_networking_router_route_v2" "default" {
 }
 */
 
-resource "openstack_networking_secgroup_v2" "administration" {
+resource "openstack_compute_secgroup_v2" "administration" {
   name        = "administration"
   description = "administration SG"
 
-  ingress {
+  rule {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = [var.trusted_network]
   }
 
-  ingress {
+  rule {
     from_port   = 12443
     to_port     = 12443
     protocol    = "tcp"
     cidr_blocks = [var.trusted_network]
   }
 
-  ingress {
+  rule {
     from_port   = 12343
     to_port     = 12343
     protocol    = "tcp"
@@ -55,25 +55,25 @@ resource "openstack_networking_secgroup_v2" "administration" {
   }
 }
 
-resource "openstack_networking_secgroup_v2" "servers" {
+resource "openstack_compute_secgroup_v2" "servers" {
   name        = "servers"
   description = "server SG"
 
-  ingress {
+  rule {
     from_port   = 9243
     to_port     = 9243
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
+  rule {
     from_port   = 9343
     to_port     = 9343
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  egress {
+  rule {
     protocol    = -1
     from_port   = 0
     to_port     = 0
@@ -83,11 +83,11 @@ resource "openstack_networking_secgroup_v2" "servers" {
 
 }
 
-resource "openstack_networking_secgroup_v2" "internal" {
+resource "openstack_compute_secgroup_v2" "internal" {
   name        = "internal"
   description = "internal network SG"
 
-    ingress {
+    rule {
     protocol  = -1
     from_port = 0
     to_port   = 0

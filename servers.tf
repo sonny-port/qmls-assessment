@@ -53,9 +53,9 @@ resource "openstack_compute_instance_v2" "server2" {
   }
   
   security_groups = [
-    openstack_networking_secgroup_v2.administration.name,
-    openstack_networking_secgroup_v2.servers.name,
-    openstack_networking_secgroup_v2.internal.name,
+    openstack_compute_secgroup_v2.administration.name,
+    openstack_compute_secgroup_v2.servers.name,
+    openstack_compute_secgroup_v2.internal.name,
   ]
   tags = {
     managed-by = "terraform"

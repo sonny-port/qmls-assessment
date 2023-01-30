@@ -29,13 +29,34 @@ variable "cidr" {
   default = "172.31.6.0/23"
 }
 
-variable "trusted_networks" {
-  type = list
-  description = "CIDR formatted IP (<IP Address>/32) or network that will be allowed access (you can use 0.0.0.0/0 for unrestricted access)"
-  default = ["172.31.8.0/23", "172.31.6.0/23", "172.31.0.0/23"]
-}
-
 variable "gateway_address" {
   description = "IP of gateway to public"
   default = "172.31.6.1"
+}
+
+# Path to your public key, which will be used to log in to ece instances
+variable "public_key" {
+  default = "~/.ssh/id_rsa.pub"
+}
+
+# Path to your private key that matches your public from ^^
+variable "private_key" {
+  default = "~/.ssh/id_rsa"
+}
+
+variable "ece-version" {
+  default = "2.4.3"
+}
+
+variable "sleep-timeout" {
+  default="30"
+}
+
+variable "remote_user" {
+  # default = "centos"
+  # For ubuntu, uncomment this
+  default = "ubuntu"
+}
+variable "device_name" {
+  default="nvme0n1"
 }

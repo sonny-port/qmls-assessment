@@ -13,13 +13,13 @@ resource "openstack_compute_instance_v2" "server0" {
   }
   
   security_groups = [
-    openstack_networking_secgroup_v2.administration.name,
-    openstack_networking_secgroup_v2.servers.name,
-    openstack_networking_secgroup_v2.internal.name,
+    openstack_compute_secgroup_v2.administration.name,
+    openstack_compute_secgroup_v2.servers.name,
+    openstack_compute_secgroup_v2.internal.name,
   ]
-  tags = {
-    managed-by = "terraform"
-  }
+  tags = [
+    "managed-by = terraform"
+  ]
 }
 
 resource "openstack_compute_instance_v2" "server1" {
@@ -33,13 +33,13 @@ resource "openstack_compute_instance_v2" "server1" {
   }
   
   security_groups = [
-    openstack_networking_secgroup_v2.administration.name,
-    openstack_networking_secgroup_v2.servers.name,
-    openstack_networking_secgroup_v2.internal.name,
+    openstack_compute_secgroup_v2.administration.name,
+    openstack_compute_secgroup_v2.servers.name,
+    openstack_compute_secgroup_v2.internal.name,
   ]
-  tags = {
-    managed-by = "terraform"
-  }
+  tags = [
+    "managed-by = terraform"
+  ]
 }
 
 resource "openstack_compute_instance_v2" "server2" {
@@ -57,9 +57,9 @@ resource "openstack_compute_instance_v2" "server2" {
     openstack_compute_secgroup_v2.servers.name,
     openstack_compute_secgroup_v2.internal.name,
   ]
-  tags = {
-    managed-by = "terraform"
-  }
+  tags = [
+    "managed-by = terraform"
+  ]
 }
 /*
 resource "openstack_networking_floatingip_v2" "fip_1" {

@@ -36,22 +36,22 @@ resource "openstack_compute_secgroup_v2" "administration" {
   rule {
     from_port   = 22
     to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.trusted_network]
+    ip_protocol    = "tcp"
+    cidr = "172.31.6.0/23"
   }
 
   rule {
     from_port   = 12443
     to_port     = 12443
-    protocol    = "tcp"
-    cidr_blocks = [var.trusted_network]
+    ip_protocol    = "tcp"
+    cidr = "172.31.6.0/23"
   }
 
   rule {
     from_port   = 12343
     to_port     = 12343
-    protocol    = "tcp"
-    cidr_blocks = [var.trusted_network]
+    ip_protocol    = "tcp"
+    cidr = "172.31.6.0/23"
   }
 }
 
@@ -62,24 +62,23 @@ resource "openstack_compute_secgroup_v2" "servers" {
   rule {
     from_port   = 9243
     to_port     = 9243
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    ip_protocol    = "tcp"
+    cidr = "0.0.0.0/0"
   }
 
   rule {
     from_port   = 9343
     to_port     = 9343
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    ip_protocol    = "tcp"
+    cidr = "0.0.0.0/0"
   }
 
   rule {
-    protocol    = -1
+    ip_protocol = -1
     from_port   = 0
     to_port     = 0
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr = "0.0.0.0/0"
   }
-
 
 }
 
@@ -88,7 +87,7 @@ resource "openstack_compute_secgroup_v2" "internal" {
   description = "internal network SG"
 
     rule {
-    protocol  = -1
+    ip_protocol  = -1
     from_port = 0
     to_port   = 0
     self      = true

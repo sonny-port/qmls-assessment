@@ -20,7 +20,7 @@ resource "null_resource" "ansible-install" {
 
 output "ece-instances" {
    description = "The public dns of created server instances."
-   value = [openstack_compute_instance_v2.*]
+   value = ["${openstack_compute_instance_v2.server0.name}", "${openstack_compute_instance_v2.server1.name}", "${openstack_compute_instance_v2.server2.name}",]
 }
 
 output "ece-ui-url" {

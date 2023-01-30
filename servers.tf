@@ -76,12 +76,12 @@ data "template_file" "ansible-install" {
   template = file("ansible-install.sh")
   depends_on = [openstack_compute_instance_v2.server0,openstack_compute_instance_v2.server1,openstack_compute_instance_v2.server2]
   vars = {
-    ece-server0 = openstack_compute_instance_v2.server0
-    ece-server0-zone = openstack_compute_instance_v2.server0.availability_zone
-    ece-server1 = openstack_compute_instance_v2.server1
-    ece-server1-zone = openstack_compute_instance_v2.server1.availability_zone
-    ece-server2 = openstack_compute_instance_v2.server2
-    ece-server2-zone = openstack_compute_instance_v2.server2.availability_zone
+    ece-server0 = "${openstack_compute_instance_v2.server0.name}"
+    ece-server0-zone = "nova"
+    ece-server1 = "${openstack_compute_instance_v2.server1.name}"
+    ece-server1-zone = "nova"
+    ece-server2 = "${openstack_compute_instance_v2.server2.name}"
+    ece-server2-zone = "nova"
 
     # Keys to server
     key = var.private_key

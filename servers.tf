@@ -74,7 +74,7 @@ resource "openstack_compute_floatingip_associate_v2" "fip_1" {
 
 data "template_file" "ansible-install" {
   template = file("ansible-install.sh")
-  depends_on = [openstack_compute_instance_v2.*]
+  depends_on = [openstack_compute_instance_v2.server0,openstack_compute_instance_v2.server1,openstack_compute_instance_v2.server2]
   vars = {
     ece-server0 = openstack_compute_instance_v2.server0
     ece-server0-zone = openstack_compute_instance_v2.server0.availability_zone
